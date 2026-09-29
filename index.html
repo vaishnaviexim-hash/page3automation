@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page3automation – Design your business automation</title>
+<meta name="description" content="Answer a few questions about your business. Page3automation designs an AI system that brings customers in, follows them up and saves your team hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1F2A5A;--ink2:#3B4677;--paper:#F6F7FB;--card:#FFFFFF;--line:#DCE0EE;--gold:#F2A33A;--teal:#127C74;--text:#1A1D29;--muted:#5F6680}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--text);font:400 17px/1.55 Figtree,system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:var(--ink);color:#fff;padding:28px 20px 72px;padding-top:calc(28px + env(safe-area-inset-top,0px))}
+.wrap{max-width:640px;margin:0 auto}
+.brand{font:700 20px/1 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.01em}
+.brand span{color:var(--gold)}
+h1{font:700 clamp(30px,7vw,44px)/1.08 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;margin:26px 0 12px}
+.lede{color:#C9CEE6;margin:0;max-width:34ch}
+main{margin-top:-48px;padding:0 16px 48px;padding-bottom:calc(48px + env(safe-area-inset-bottom,0px))}
+.panel{background:var(--card);border-radius:18px;box-shadow:0 12px 32px rgba(31,42,90,.12);padding:22px 20px 24px}
+.progress{display:flex;gap:6px;margin-bottom:18px}
+.progress i{flex:1;height:6px;border-radius:6px;background:var(--line)}
+.progress i.on{background:var(--gold)}
+.stepno{color:var(--muted);font-size:14px;margin:0 0 4px}
+h2{font:700 25px/1.2 'Bricolage Grotesque',system-ui,sans-serif;margin:0 0 18px;color:var(--ink)}
+.step{display:none}.step.active{display:block}
+label.q{display:block;font-weight:600;margin:18px 0 8px}
+label.q small{font-weight:400;color:var(--muted)}
+input[type=text],input[type=tel],input[type=email],input[type=url],textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;font:inherit;background:#fff;color:var(--text)}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--ink2);box-shadow:0 0 0 3px rgba(59,70,119,.15)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:inline-block;padding:10px 14px;border:1.5px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:15px;user-select:none}
+.chips input:checked+span{background:var(--teal);border-color:var(--teal);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.nav{display:flex;gap:10px;margin-top:26px}
+button{font:600 17px/1 Figtree,system-ui,sans-serif;border-radius:12px;padding:15px 18px;border:0;cursor:pointer}
+.next{flex:1;background:var(--ink);color:#fff}
+.back{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.err{color:#B42318;font-size:15px;margin:12px 0 0;min-height:1em}
+.hp{position:absolute;left:-5000px;height:0;overflow:hidden}
+.done{text-align:center;padding:18px 4px 8px}
+.done .mark{width:64px;height:64px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:32px;margin:0 auto 16px}
+.foot{color:var(--muted);font-size:14px;text-align:center;margin-top:18px}
+@media (prefers-reduced-motion:no-preference){.step.active{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">Page3<span>automation</span></div>
+  <h1>Tell us how your business runs. We'll design the system that runs it for you.</h1>
+  <p class="lede">About 5 minutes. You get a personal automation plan within 24 hours.</p>
+</div></header>
+<main><div class="wrap"><div class="panel">
+<form id="f" novalidate>
+  <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hp"><label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+
+  <section class="step active" data-step="1">
+    <p class="stepno">Step 1 of 6</p><h2>Your business</h2>
+    <label class="q" for="business">Business name</label><input type="text" id="business" name="business" required autocomplete="organization">
+    <label class="q">What kind of business is it?</label>
+    <div class="chips" data-name="type" data-single>
+      <label><input type="radio" name="type" value="Jewellery"><span>Jewellery</span></label>
+      <label><input type="radio" name="type" value="Boutique / fashion"><span>Boutique / fashion</span></label>
+      <label><input type="radio" name="type" value="Salon / spa"><span>Salon / spa</span></label>
+      <label><input type="radio" name="type" value="Clinic"><span>Clinic</span></label>
+      <label><input type="radio" name="type" value="Restaurant / café"><span>Restaurant / café</span></label>
+      <label><input type="radio" name="type" value="Furniture / décor showroom"><span>Furniture / décor</span></label>
+      <label><input type="radio" name="type" value="Real estate"><span>Real estate</span></label>
+      <label><input type="radio" name="type" value="Other"><span>Other</span></label>
+    </div>
+    <label class="q" for="cities">Which cities do your customers come from?</label><input type="text" id="cities" name="cities" placeholder="e.g. Surat, Ahmedabad">
+    <label class="q">Years in business</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="years" value="Under 2"><span>Under 2</span></label>
+      <label><input type="radio" name="years" value="2–5"><span>2–5</span></label>
+      <label><input type="radio" name="years" value="5–15"><span>5–15</span></label>
+      <label><input type="radio" name="years" value="15+"><span>15+</span></label>
+    </div>
+    <label class="q" for="instagram">Instagram <small>(link or @handle, optional)</small></label><input type="text" id="instagram" name="instagram">
+    <label class="q" for="website">Website <small>(optional)</small></label><input type="text" id="website" name="website">
+    <label class="q" for="facebook">Facebook page <small>(optional)</small></label><input type="text" id="facebook" name="facebook">
+  </section>
+
+  <section class="step" data-step="2">
+    <p class="stepno">Step 2 of 6</p><h2>What do you want more of?</h2>
+    <label class="q">Pick up to 3</label>
+    <div class="chips" data-max="3">
+      <label><input type="checkbox" name="goals" value="More walk-ins"><span>More walk-ins</span></label>
+      <label><input type="checkbox" name="goals" value="More WhatsApp enquiries"><span>More WhatsApp enquiries</span></label>
+      <label><input type="checkbox" name="goals" value="Look premium online"><span>Look premium online</span></label>
+      <label><input type="checkbox" name="goals" value="Save staff time"><span>Save staff time</span></label>
+      <label><input type="checkbox" name="goals" value="Never miss a follow-up"><span>Never miss a follow-up</span></label>
+      <label><input type="checkbox" name="goals" value="More Google reviews"><span>More Google reviews</span></label>
+      <label><input type="checkbox" name="goals" value="Control stock and pricing"><span>Control stock and pricing</span></label>
+      <label><input type="checkbox" name="goals" value="Reach customers in other cities"><span>Customers in other cities</span></label>
+    </div>
+  </section>
+
+  <section class="step" data-step="3">
+    <p class="stepno">Step 3 of 6</p><h2>How things work today</h2>
+    <label class="q">Who posts on your social media?</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="posting_who" value="Nobody"><span>Nobody</span></label>
+      <label><input type="radio" name="posting_who" value="I do it myself"><span>I do it myself</span></label>
+      <label><input type="radio" name="posting_who" value="A staff member"><span>A staff member</span></label>
+      <label><input type="radio" name="posting_who" value="An agency"><span>An agency</span></label>
+    </div>
+    <label class="q">How often do you post?</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="posting_freq" value="Rarely"><span>Rarely</span></label>
+      <label><input type="radio" name="posting_freq" value="Once or twice a week"><span>1–2 a week</span></label>
+      <label><input type="radio" name="posting_freq" value="Almost daily"><span>Almost daily</span></label>
+    </div>
+    <label class="q">Tools you already use</label>
+    <div class="chips">
+      <label><input type="checkbox" name="tools" value="WhatsApp Business"><span>WhatsApp Business</span></label>
+      <label><input type="checkbox" name="tools" value="Excel / Google Sheets"><span>Excel / Sheets</span></label>
+      <label><input type="checkbox" name="tools" value="Tally / billing software"><span>Tally / billing</span></label>
+      <label><input type="checkbox" name="tools" value="A CRM"><span>A CRM</span></label>
+      <label><input type="checkbox" name="tools" value="Google Business Profile"><span>Google Business Profile</span></label>
+      <label><input type="checkbox" name="tools" value="None of these"><span>None of these</span></label>
+    </div>
+    <label class="q" for="timewaster">What eats most of your team's time every day?</label>
+    <textarea id="timewaster" name="timewaster" placeholder="e.g. replying to price questions on WhatsApp, updating stock in Excel"></textarea>
+  </section>
+
+  <section class="step" data-step="4">
+    <p class="stepno">Step 4 of 6</p><h2>Your photos, videos and occasions</h2>
+    <label class="q">Product photos you have</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="photos" value="Many"><span>Many</span></label>
+      <label><input type="radio" name="photos" value="Some"><span>Some</span></label>
+      <label><input type="radio" name="photos" value="Very few"><span>Very few</span></label>
+    </div>
+    <label class="q">Videos you have</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="videos" value="Many"><span>Many</span></label>
+      <label><input type="radio" name="videos" value="Some"><span>Some</span></label>
+      <label><input type="radio" name="videos" value="None"><span>None</span></label>
+    </div>
+    <label class="q">Occasions that matter to your sales</label>
+    <div class="chips">
+      <label><input type="checkbox" name="occasions" value="Festivals"><span>Festivals</span></label>
+      <label><input type="checkbox" name="occasions" value="Wedding season"><span>Wedding season</span></label>
+      <label><input type="checkbox" name="occasions" value="Exhibitions / events"><span>Exhibitions / events</span></label>
+      <label><input type="checkbox" name="occasions" value="Sales / offers"><span>Sales / offers</span></label>
+      <label><input type="checkbox" name="occasions" value="Birthdays / anniversaries"><span>Birthdays / anniversaries</span></label>
+    </div>
+    <label class="q">Languages for your customers</label>
+    <div class="chips">
+      <label><input type="checkbox" name="languages" value="English"><span>English</span></label>
+      <label><input type="checkbox" name="languages" value="Hindi"><span>Hindi</span></label>
+      <label><input type="checkbox" name="languages" value="Gujarati"><span>Gujarati</span></label>
+      <label><input type="checkbox" name="languages" value="Other"><span>Other</span></label>
+    </div>
+  </section>
+
+  <section class="step" data-step="5">
+    <p class="stepno">Step 5 of 6</p><h2>What should run by itself?</h2>
+    <label class="q">Choose everything that interests you</label>
+    <div class="chips">
+      <label><input type="checkbox" name="modules" value="Daily social media and Google presence"><span>Daily social media and Google</span></label>
+      <label><input type="checkbox" name="modules" value="WhatsApp follow-ups and reviews"><span>WhatsApp follow-ups and reviews</span></label>
+      <label><input type="checkbox" name="modules" value="Instant prices and quotations"><span>Instant prices and quotations</span></label>
+      <label><input type="checkbox" name="modules" value="Stock and daily business reports"><span>Stock and daily reports</span></label>
+      <label><input type="checkbox" name="modules" value="Website and blog"><span>Website and blog</span></label>
+      <label><input type="checkbox" name="modules" value="AI design visuals for custom orders"><span>AI design visuals</span></label>
+    </div>
+    <label class="q">Who should approve content before it goes out?</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="approver" value="Owner approves everything"><span>I approve everything</span></label>
+      <label><input type="radio" name="approver" value="A manager approves"><span>A manager</span></label>
+      <label><input type="radio" name="approver" value="Fully automatic"><span>Fully automatic</span></label>
+    </div>
+    <label class="q">Monthly budget for tools and service</label>
+    <div class="chips" data-single>
+      <label><input type="radio" name="budget" value="Under ₹10,000"><span>Under ₹10k</span></label>
+      <label><input type="radio" name="budget" value="₹10,000–25,000"><span>₹10k–25k</span></label>
+      <label><input type="radio" name="budget" value="₹25,000–50,000"><span>₹25k–50k</span></label>
+      <label><input type="radio" name="budget" value="Above ₹50,000"><span>Above ₹50k</span></label>
+      <label><input type="radio" name="budget" value="Not sure yet"><span>Not sure yet</span></label>
+    </div>
+  </section>
+
+  <section class="step" data-step="6">
+    <p class="stepno">Step 6 of 6</p><h2>Where should we send your plan?</h2>
+    <label class="q" for="name">Your name</label><input type="text" id="name" name="name" required autocomplete="name">
+    <label class="q" for="phone">WhatsApp number</label><input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+91">
+    <label class="q" for="email">Email</label><input type="email" id="email" name="email" autocomplete="email">
+    <label class="q" for="notes">Anything else we should know? <small>(optional)</small></label><textarea id="notes" name="notes"></textarea>
+  </section>
+
+  <p class="err" id="err" role="alert"></p>
+  <div class="nav" id="nav">
+    <button type="button" class="back" id="back" hidden>Back</button>
+    <button type="button" class="next" id="next">Next</button>
+  </div>
+</form>
+<div class="done" id="done" hidden>
+  <div class="mark" aria-hidden="true">✓</div>
+  <h2>Thank you. Your plan is being prepared.</h2>
+  <p>We'll send your personal automation plan on WhatsApp or email within 24 hours.</p>
+</div>
+</div>
+<p class="foot">Your answers are used only to prepare your plan.</p>
+</div></main>
+<script>
+(function(){
+  var HOOK='https://hook.eu1.make.com/ft3te4a6r8dllbubh6nrmezf3p8zjxvy';
+  var f=document.getElementById('f'),steps=[].slice.call(f.querySelectorAll('.step')),bars=[].slice.call(f.querySelectorAll('.progress i'));
+  var back=document.getElementById('back'),next=document.getElementById('next'),err=document.getElementById('err'),cur=0;
+  function show(i){steps.forEach(function(s,k){s.classList.toggle('active',k===i)});bars.forEach(function(b,k){b.classList.toggle('on',k<=i)});
+    back.hidden=i===0;next.textContent=i===steps.length-1?'Send my answers':'Next';err.textContent='';window.scrollTo({top:0,behavior:'smooth'});}
+  f.querySelectorAll('.chips[data-max]').forEach(function(g){var max=+g.dataset.max;g.addEventListener('change',function(e){
+    var on=g.querySelectorAll('input:checked');if(on.length>max){e.target.checked=false;err.textContent='Please pick up to '+max+'.';}else err.textContent='';});});
+  function val(n){var els=f.querySelectorAll('[name="'+n+'"]'),out=[];els.forEach(function(el){if((el.type==='checkbox'||el.type==='radio')){if(el.checked)out.push(el.value);}else if(el.value.trim())out.push(el.value.trim());});return out.join(', ');}
+  function check(i){
+    if(i===0){if(!val('business'))return 'Please enter your business name.';if(!val('type'))return 'Please choose what kind of business it is.';}
+    if(i===1&&!val('goals'))return 'Please pick at least one goal.';
+    if(i===5){if(!val('name'))return 'Please enter your name.';if(!val('phone')&&!val('email'))return 'Please give a WhatsApp number or an email so we can send your plan.';
+      var em=val('email');if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))return 'That email address looks incomplete.';}
+    return '';}
+  back.addEventListener('click',function(){if(cur>0){cur--;show(cur);}});
+  next.addEventListener('click',function(){
+    var m=check(cur);if(m){err.textContent=m;return;}
+    if(cur<steps.length-1){cur++;show(cur);return;}
+    var names=['business','type','cities','years','instagram','website','facebook','goals','posting_who','posting_freq','tools','timewaster','photos','videos','occasions','languages','modules','approver','budget','name','phone','email','notes','company'];
+    var p=new URLSearchParams();names.forEach(function(n){p.append(n,val(n));});
+    next.disabled=true;next.textContent='Sending…';
+    fetch(HOOK,{method:'POST',mode:'no-cors',body:p}).then(function(){f.hidden=true;document.getElementById('done').hidden=false;window.scrollTo({top:0,behavior:'smooth'});})
+      .catch(function(){next.disabled=false;next.textContent='Send my answers';err.textContent='Could not send. Please check your internet connection and try again.';});
+  });
+})();
+</script>
+</body>
+</html>
